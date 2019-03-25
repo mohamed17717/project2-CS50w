@@ -13,7 +13,7 @@ def channelMaker(channelName):
 	if notExist:
 		channels[channelName] = {
 			'msgs': [],
-			'maxNumOfMsgs': 10,
+			'maxNumOfMsgs': 100,
 			'sessions': [],
 			'usernames': [],
 		}
