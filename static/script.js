@@ -38,6 +38,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
 				joinBtns.forEach((btn)=>{btn.classList.remove('active')});
 				button.classList.add('active');
 
+				
+				localStorage.setItem('lastChannel', channelName);
 				socket.emit('joinChannel', {'channelName': channelName, 'username': user});
 			};
 		});
@@ -49,6 +51,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
 				socket.emit('createChannel',  channelName);
 			return false;
 		};
+
+
+		let lastChannel = localStorage.getItem('lastChannel');
+		if (lastChannel){
+			document.querySelector(`#${lastChannel}`).click();
+		}
 	});
 
 	socket.on('reloadChannels', (channels)=>{
